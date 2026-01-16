@@ -75,9 +75,26 @@ window.onload = function() {
     this.requestAnimationFrame(update);
     this.setInterval(placePipes, 1500); //every 1.5 seconds
     setInterval(animateMosquito, 100); //every 0.2 seconds
-    this.document.addEventListener("keydown", moveMosquito);
+
+    this.document.addEventListener("keydown", function(e) {
+        if(
+            e.code == "Space" || 
+            e.code == "ArrowUp" || 
+            e.code == "KeyX" 
+        ) {
+            jump();
+        }
+    });
+
+    
+    document.addEventListener("mousedown", jump);
+
+    document.addEventListener("touchstart", jump); // mobile
+
+    
 
 }
+
 
 
 function update() {
@@ -169,9 +186,9 @@ function placePipes() {
     pipeArray.push(bottomPipe);
 }
 
-function moveMosquito(e) {
+function jump() {
     //jump mosquito
-    if(e.code == "Space" || e.code == "ArrowUp" || e.code == "KeyX" || e.code == "mousebutton0") {
+    
         velocityY = -3;
 
         if(gameOver) {
@@ -181,8 +198,11 @@ function moveMosquito(e) {
             score = 0;
             gameOver = false;
         }
-    }
 }
+function mouseJump() {
+    jump();
+}
+
 
 function detectCollision(a,b) {
     return a.x < b.x + b.width &&
