@@ -1,0 +1,28 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+}
+
+#board{
+    /* border: 2px solid #000; */
+    /* background-color: #1a4556;  */
+    /* Sky blue background */
+    /* background-image: url(./MosBGloop.png); */
+    display: block;
+    margin: 0 auto;
+    background: linear-gradient( 
+        to bottom, 
+        #0B1020 0%, /* deep navy at the top */ 
+        #1A1F3A 50%, /* indigo in the middle */ 
+        #2A1F4A 100% /* dark purple at the bottom */ );
+    /* background-repeat: no-repeat;  */
+    /* background-size: cover; */
+    /* overflow: hidden; */
+}
+
+.star {
+      position: absolute;
+      border-radius: 50%;
+      background: white;
+      opacity: 0.8;
+    }
