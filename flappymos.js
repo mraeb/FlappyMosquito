@@ -106,13 +106,8 @@ function update() {
 
     //mosquito
     velocityY += gravity;
-    // mosquito.y += velocityY;
     mosquito.y = Math.max(mosquito.y + velocityY, 0);
-    // context.drawImage(mosImage, mosquito.x, mosquito.y, mosquito.width, mosquito.height);
     context.drawImage(mosImgs[mosImgsIndex], mosquito.x, mosquito.y, mosquito.width, mosquito.height);
-    // mosImgsIndex++;
-    // mosImgsIndex = mosImgsIndex % mosImgs.length;
-
     if(mosquito.y > board.height) {
         gameOver = true;
     }
@@ -149,14 +144,10 @@ function update() {
     }
 }
 
-
-
-
 function animateMosquito() {
     mosImgsIndex++;
     mosImgsIndex = mosImgsIndex % mosImgs.length;
 }
-
 
 function placePipes() {
     if(gameOver) {
@@ -203,22 +194,9 @@ function mouseJump() {
     jump();
 }
 
-
 function detectCollision(a,b) {
     return a.x < b.x + b.width &&
            a.x + a.width > b.x &&
            a.y < b.y + b.height &&
            a.y + a.height > b.y;
-}
-
-const numStars = 150; // number of stars 
- for (let i = 0; i < numStars; i++) { 
-    const star = document.createElement("div"); const size = Math.random() * 2 + 1; // star size between 1–3px 
-    star.className = "star"; 
-    star.style.width = `${size}px`; 
-    star.style.height = `${size}px`; 
-    star.style.background = Math.random() > 0.5 ? "white" : "#add8e6"; // white or light blue 
-    star.style.top = `${Math.random() * window.innerHeight}px`; 
-    star.style.left = `${Math.random() * window.innerWidth}px`; 
-    document.body.appendChild(star); 
 }
