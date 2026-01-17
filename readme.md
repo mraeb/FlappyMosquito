@@ -73,8 +73,6 @@ Open index.html in your browser
 
 🏆 High-score using localStorage
 
-⏸️ Pause / resume feature
-
 🎯 Difficulty scaling
 
 👨‍💻 Author
