@@ -85,22 +85,16 @@ window.onload = function() {
             jump();
         }
     });
-
-    
     document.addEventListener("mousedown", jump);
-
     document.addEventListener("touchstart", jump); // mobile
-
-    
-
 }
-
 
 
 function update() {
     requestAnimationFrame(update);
     if(gameOver) {
         return;
+
     }
     context.clearRect(0, 0, board.width, board.height);
 
@@ -117,7 +111,7 @@ function update() {
         pipe.x += velocityX;
         context.drawImage(pipe.img, pipe.x, pipe.y, pipe.width, pipe.height);
 
-        if(!pipe.passed && mosquito.x < pipe.x + pipe.width) {
+        if(!pipe.passed && pipe.x > mosquito.x + mosquito.width) {
             score+= 0.5; //increase score by 0.5 for each pipe pair
             pipe.passed = true;
         }
@@ -128,7 +122,7 @@ function update() {
     }
 
     //clear pipes
-    while(pipeArray.length > 0 && pipeArray[0].x < -pipeWidth) {
+    while(pipeArray.length > 0 && pipeArray[0].x > board.width) {
         pipeArray.shift();
     }
 
@@ -136,11 +130,21 @@ function update() {
     context.fillStyle = "white";
     context.font = "45px sans-serif";
     context.fillText(score, 5, 45);
+    
+    //increase speed every 5 points
+    if(score != 0 && score % 5 == 0) {
+        velocityX += 0.005;
+    }
 
     if(gameOver) {
+        mosquito.y = mosY;
+        pipeArray = [];
+        score = 0;
+        velocityX = 1
         context.fillStyle = "white";
         context.font = "60px sans-serif";
         context.fillText("Game Over!", board.width / 3, board.height / 2);
+        context.fillText("Press Space to Restart", board.width / 6.5, board.height / 2 + 60);
     }
 }
 
