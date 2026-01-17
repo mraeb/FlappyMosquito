@@ -13,10 +13,3 @@ body{
         #2A1F4A 100% /* dark purple at the bottom */ );
     position: fixed;
 }
-
-.star {
-      position: absolute;
-      border-radius: 50%;
-      background: white;
-      opacity: 0.8;
-    }
