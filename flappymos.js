@@ -32,7 +32,7 @@ let topPipeImg;
 let bottomPipeImg;
 
 //physics
-let velocityX = 1; //pipe moving speed
+let velocityX = 0.5; //pipe moving speed
 let velocityY = 0; //mosquito jump speed
 let gravity = 0.05; //mosquito falling speed
 
@@ -85,7 +85,6 @@ function update() {
     requestAnimationFrame(update);
     if(gameOver) {
         return;
-
     }
     context.clearRect(0, 0, board.width, board.height);
 
@@ -99,7 +98,7 @@ function update() {
     //pipes
     for(let i = 0; i < pipeArray.length; i++) {
         let pipe = pipeArray[i];
-        pipe.x += velocityX;
+        pipe.x += (velocityX+1);
         context.drawImage(pipe.img, pipe.x, pipe.y, pipe.width, pipe.height);
 
         if(!pipe.passed && pipe.x > mosquito.x + mosquito.width) {
@@ -131,7 +130,7 @@ function update() {
         mosquito.y = mosY;
         pipeArray = [];
         score = 0;
-        velocityX = 1
+        velocityX = 0.5;
         context.fillStyle = "white";
         context.font = "60px sans-serif";
         context.fillText("Game Over!", board.width / 3, board.height / 2);
@@ -174,7 +173,6 @@ function placePipes() {
 
 function jump() {
     //jump mosquito
-    
         velocityY = -3;
 
         if(gameOver) {
