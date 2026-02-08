@@ -39,17 +39,11 @@ let gravity = 0.05; //mosquito falling speed
 let gameOver = false;
 let score = 0;
 
-
-
 window.onload = function() {
     board = document.getElementById("board");
     board.width = boardwidth;
     board.height = boardheight;
     context = board.getContext("2d"); // used for drawing on the board
-
-    //draw mosquito
-    // context.fillStyle = "green";
-    // context.fillRect(mosquito.x, mosquito.y, mosquito.width, mosquito.height);
 
     //load images
     mosImage = new Image();
