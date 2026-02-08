@@ -21,7 +21,6 @@ let mosquito = {
     height: mosHeight
 }
 
-
 //pipes
 let pipeArray = [];
 let pipeWidth = 64;
@@ -47,7 +46,6 @@ window.onload = function() {
     board.width = boardwidth;
     board.height = boardheight;
     context = board.getContext("2d"); // used for drawing on the board
-
 
     //draw mosquito
     // context.fillStyle = "green";
@@ -88,7 +86,6 @@ window.onload = function() {
     document.addEventListener("mousedown", jump);
     document.addEventListener("touchstart", jump); // mobile
 }
-
 
 function update() {
     requestAnimationFrame(update);
@@ -158,7 +155,7 @@ function placePipes() {
         return;
     }
     let randomPipeY = pipeY - pipeHeight / 4 - Math.random() * (pipeHeight / 2);
-    let openingSpace = board.height/4; //space between top and bottom pipe
+    let openingSpace = board.height/3; //space between top and bottom pipe
 
     let topPipe = {
         img : topPipeImg,
